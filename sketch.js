@@ -1,14 +1,40 @@
-let size = document.getElementById('range').value
-let gridSize = document.getElementById('gridsize')
+// Setup variables
 
+const slider = document.getElementById('range')
+let size = slider.value
+const gridSize = document.getElementById('gridsize')
+const boxes = document.querySelectorAll('.boxclass')
+const clearButton = document.querySelector('#clearbutton');
+const applyButton = document.querySelector('#apply');
+
+// Listen for button clicks
+
+slider.addEventListener("input", (event) =>{
+    updateGrid();
+    applyButton.disabled=false;
+} )
+
+applyButton.addEventListener('click', (event) =>{
+    changeRange();
+})
+
+
+clearButton.addEventListener('click', (event) => {
+    hoverClear();
+})
+
+
+// Do a bunch of things when your apply your grid size
 function changeRange(){
     removeBoxes();
     makeDiv();
     hoverClear();
     hover();
+    applyButton.disabled=true
 }
 
 // This function adds the background color for hover
+
 function hover(){
     let boxes = document.querySelectorAll('.boxclass')
 
@@ -16,6 +42,8 @@ function hover(){
         event.target.style.backgroundColor = 'black'
     }))
 }
+
+// Clear out the background color of the grid
 
 function hoverClear(){
     let boxes = document.querySelectorAll('.boxclass')
@@ -27,11 +55,14 @@ function hoverClear(){
 
 
 // This function removes the existing divs
+
 function removeBoxes(){
     let boxes = document.querySelectorAll('#box');
     console.log('Remove function ran');
     boxes.forEach(e => e.remove())
 }
+
+// This function updates the grid value text
 
 function updateGrid(){
     let size = document.getElementById('range').value
@@ -40,6 +71,7 @@ function updateGrid(){
 }
 
 // This function adds the correct number of divs to fill out the square
+
 function makeDiv(){
     let size = document.getElementById('range').value
     let gridSize = document.getElementById('gridsize')
@@ -57,11 +89,13 @@ function makeDiv(){
     }
 
     document.querySelector('#container').style.gridTemplateColumns=`repeat(${size},2fr)`
-    console.log(document.querySelector('#container').style.gridTemplateColumns)
     document.querySelector('#container').style.gridTemplateRows=`repeat(${size},2fr)`
 
 
  }
 
-makeDiv();
-hover();
+ window.onload = () => {
+    makeDiv();
+    hover();
+    applyButton.disabled=true;
+ }
