@@ -1,3 +1,5 @@
+let size = document.getElementById('range').value
+let gridSize = document.getElementById('gridsize')
 
 function changeRange(){
     removeBoxes();
@@ -18,9 +20,9 @@ function hover(){
 function hoverClear(){
     let boxes = document.querySelectorAll('.boxclass')
 
-    boxes.forEach(e => e.addEventListener("mouseover", (event) =>{
-        event.target.style.backgroundColor = 'transparent'
-    }))
+    boxes.forEach(e => {
+        e.style.backgroundColor='transparent'
+    })
 }
 
 
@@ -29,6 +31,12 @@ function removeBoxes(){
     let boxes = document.querySelectorAll('#box');
     console.log('Remove function ran');
     boxes.forEach(e => e.remove())
+}
+
+function updateGrid(){
+    let size = document.getElementById('range').value
+    let gridSize = document.getElementById('gridsize')
+    gridSize.textContent=String(size + ' X ' + size)
 }
 
 // This function adds the correct number of divs to fill out the square
