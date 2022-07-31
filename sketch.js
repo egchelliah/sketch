@@ -2,7 +2,27 @@
 function changeRange(){
     removeBoxes();
     makeDiv();
+    hoverClear();
+    hover();
 }
+
+// This function adds the background color for hover
+function hover(){
+    let boxes = document.querySelectorAll('.boxclass')
+
+    boxes.forEach(e => e.addEventListener("mouseover", (event) =>{
+        event.target.style.backgroundColor = 'black'
+    }))
+}
+
+function hoverClear(){
+    let boxes = document.querySelectorAll('.boxclass')
+
+    boxes.forEach(e => e.addEventListener("mouseover", (event) =>{
+        event.target.style.backgroundColor = 'transparent'
+    }))
+}
+
 
 // This function removes the existing divs
 function removeBoxes(){
@@ -24,6 +44,7 @@ function makeDiv(){
     for(i=0;i<square;i++){
         div = document.createElement("div");
         div.id='box'
+        div.className='boxclass'
         document.getElementById('container').appendChild(div);
     }
 
@@ -35,3 +56,4 @@ function makeDiv(){
  }
 
 makeDiv();
+hover();
