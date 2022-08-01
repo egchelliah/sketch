@@ -1,10 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+*{
+    font-family: 'VT323', monospace;
+}
+
 h1{
     text-align: center;
+    font-size: 55px;
 }
 
 .controls{
     display: flex;
     gap: 5px;
+    font-size: 25px;
 }
 
 .allthings{
@@ -27,8 +35,8 @@ h1{
     grid-template-rows: repeat(30, 2fr);
     border: 5px solid white;
     border-radius: 5px;
-    height: 400px;
-    width: 400px;
+    height: 500px;
+    width: 500px;
     /* background-color: gray; */
     /* box-shadow: 10px 10px; */
 }
